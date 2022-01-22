@@ -1,6 +1,6 @@
 Projets : Je suis, je suis, je suis… Question pour un champion
   
-Je suis, je suis, je suis… Question pour un champion
+
 1. Introduction
 Cette semaine, tu as pu voir que les API, c'est vraiment sympa ! Tu as eu une légère introduction aux animations grâce à AnimeJS, il est désormais temps de s'exercer encore un peu sur les appels API et la gestion du DOM afin de produire un mini-jeu.
 
