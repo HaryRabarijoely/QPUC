@@ -27,9 +27,9 @@ const howManyQuestions = () => {
     title.innerHTML = `Je suis, je suis, je suis.... QPUC`;
     insert.innerHTML = ``;
     insert.innerHTML = `
-    <h3 class="text-center">Configurer le quizz pour commencer</h3>
+    <h2 class="text-center">Configurer le quizz pour commencer</h2>
     <div class="form-inline justify-content-center"> 
-      <label for="number">Number of question(s)  </label>
+      <label for="number">Nombre de question(s)  </label>
       <select id="number" name="level" class="form-control mx-3">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -52,7 +52,7 @@ const howManyQuestions = () => {
         <option value="19">19</option>
         <option value="20">20</option>
       </select>
-      <label for="category">of</label>
+      <label for="category">Catégories</label>
       <select id="category" name="category" class="form-control mx-3">
         <option value="9">General Knowledge</option>
         <option value="10">Entertainment: Books</option>
@@ -79,12 +79,13 @@ const howManyQuestions = () => {
         <option value="31">Entertainment: Japanese Anime &amp; Manga</option>
         <option value="32">Entertainment: Cartoon &amp; Animations</option>
       </select>
+      <label for="level">Difficultés</label>
       <select id="level" name="level" class="form-control">
         <option value="easy">Easy</option>
         <option value="medium">Medium</option>
         <option value="hard">Hard</option>
       </select>
-      <p id="launch" class="mx-5 my-5 btn btn-primary btn-lg">Go !</p>  
+      <p id="launch" class="mx-5 my-5 btn btn-primary btn-lg">Jouer</p>  
     </div>
     `;
     document.getElementById("launch").addEventListener("click", () => {
@@ -175,7 +176,7 @@ const selectAnswer = (e) => {
 
 const endGame = () => {
     gameResult();
-    title.innerHTML = `Your result : ${userPoints}/${quizz.length}`;
+    title.innerHTML = `Ton score : ${userPoints}/${quizz.length}`;
     setTimeout(() => {
       document.getElementById("qblock").style.transform = "translateX(0px)";
     }, 50);
@@ -201,7 +202,7 @@ const endGame = () => {
       </tr>
       `;
     }
-    insert.innerHTML += `<p id="restart" class="mx-5 mt-5 mb-2 btn btn-danger btn-lg">Play again ?</p>`;
+    insert.innerHTML += `<p id="restart" class="mx-5 mt-5 mb-2 btn btn-primary btn-lg">Rejouer</p>`;
     document.getElementById("restart").addEventListener("click", playAgain);
 };
 
