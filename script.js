@@ -184,9 +184,9 @@ const endGame = () => {
     <table class="table table-bordered">
       <thead class="thead-light">
         <th>Question</th>
-        <th>Answer</th>
-        <th>Your answer</th>
-        <th>Result</th>
+        <th>Réponse</th>
+        <th>Ta réponse</th>
+        <th>Résultat</th>
       </thead>
       <tbody  id="result">
       </tbody>
