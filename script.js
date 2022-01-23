@@ -95,4 +95,19 @@ const howManyQuestions = () => {
       getQuizz(URL);
     });
     
-  };
+};
+
+
+const getQuizz = (URL) => {
+    fetch(URL)
+      .then((response) => response.json())
+      .then((response) => {
+        quizz = response.results;
+        quizz.forEach((question) => {
+          answers.push(question.correct_answer);
+        });
+        displayQuestion();
+      })
+      .catch((error) => console.error(error));
+};
+
