@@ -111,3 +111,50 @@ const getQuizz = (URL) => {
       .catch((error) => console.error(error));
 };
 
+const displayQuestion = () => {
+    title.innerHTML = `Question ${questionNumber + 1} / ${quizz.length}`;
+    let currentQuestion = quizz[questionNumber];
+    insert.innerHTML = "";
+    animate([-2000, 0]);
+    insert.innerHTML = `<h2 class="mb-3">${currentQuestion.question}</h2>`;
+    if (currentQuestion.type === "boolean") {
+      insert.innerHTML += `
+      <br>  
+        <div class='row' style="height: 30vh;">
+          <div class='col d-flex flex-column'>
+            <p class='my-4 btn btn-outline-danger'>True</p>
+          </div>
+          <div class='col d-flex flex-column'>
+            <p class='my-4 btn btn-outline-danger'>False</p>
+          </div>
+        </div>
+        `;
+    }
+    if (currentQuestion.type === "multiple") {
+      let multiple = [
+        currentQuestion.correct_answer,
+        currentQuestion.incorrect_answers[0],
+        currentQuestion.incorrect_answers[1],
+        currentQuestion.incorrect_answers[2],
+      ];
+      shuffleArray(multiple);
+      insert.innerHTML += `
+      <br>  
+      <div class='row' style="height: 30vh;">
+        <div class='col d-flex flex-column'>
+          <p class="my-2 btn btn-outline-danger">${multiple[0]}</p>
+          <p class="my-2 btn btn-outline-danger">${multiple[1]}</p>
+        </div>
+        <div class='col d-flex flex-column'>
+          <p class="my-2 btn btn-outline-danger">${multiple[2]}</p>
+          <p class="my-2 btn btn-outline-danger">${multiple[3]}</p>
+        </div>
+      </div>
+      `;
+    }
+  
+    document.querySelectorAll(".btn-outline-danger").forEach((userAnswers) => {
+      userAnswers.addEventListener("click", selectAnswer);
+    });
+};
+  
