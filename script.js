@@ -1,7 +1,7 @@
 
 
 const howManyQuestions = () => {
-    title.innerHTML = `Trivia THP Next`;
+    title.innerHTML = `Je suis, je suis, je suis.... QPUC`;
     insert.innerHTML = ``;
     insert.innerHTML = `
     <h3 class="text-center">Setup your game and let's begin !</h3>
@@ -71,5 +71,5 @@ const howManyQuestions = () => {
       let URL = `https://opentdb.com/api.php?amount=${chosenNumber}&category=${chosenCategory}&difficulty=${chosenLevel}`;
       getQuizz(URL);
     });
-    console.log(chosenNumber);
+    
   };
