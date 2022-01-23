@@ -1,4 +1,27 @@
+let title = document.querySelector("h1");
+let insert = document.getElementById("quizz");
+let quizz;
+let answers = new Array();
+let userAnswers = new Array();
+let userResults = new Array();
+let userPoints = 0;
+let questionNumber = 0;
 
+const animate = (move) =>
+  anime({
+    targets: "#qblock",
+    translateX: move,
+    duration: 400,
+    easing: "linear",
+  });
+
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
 
 const howManyQuestions = () => {
     title.innerHTML = `Je suis, je suis, je suis.... QPUC`;
