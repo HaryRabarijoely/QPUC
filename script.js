@@ -27,7 +27,7 @@ const howManyQuestions = () => {
     title.innerHTML = `Je suis, je suis, je suis.... QPUC`;
     insert.innerHTML = ``;
     insert.innerHTML = `
-    <h3 class="text-center">Setup your game and let's begin !</h3>
+    <h3 class="text-center">Configurer le quizz pour commencer</h3>
     <div class="form-inline justify-content-center"> 
       <label for="number">Number of question(s)  </label>
       <select id="number" name="level" class="form-control mx-3">
