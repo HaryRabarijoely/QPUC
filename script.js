@@ -84,7 +84,7 @@ const howManyQuestions = () => {
         <option value="medium">Medium</option>
         <option value="hard">Hard</option>
       </select>
-      <p id="launch" class="mx-5 my-5 btn btn-danger btn-lg">Go !</p>  
+      <p id="launch" class="mx-5 my-5 btn btn-primary btn-lg">Go !</p>  
     </div>
     `;
     document.getElementById("launch").addEventListener("click", () => {
@@ -157,4 +157,75 @@ const displayQuestion = () => {
       userAnswers.addEventListener("click", selectAnswer);
     });
 };
+
+
+
+const selectAnswer = (e) => {
+    userAnswers.push(e.target.innerHTML);
+    questionNumber += 1;
+    animate([0, 2000]);
+    setTimeout(() => {
+      if (questionNumber >= quizz.length) {
+        return endGame();
+      }
+      displayQuestion();
+    }, 400);
+};
+
+
+const endGame = () => {
+    gameResult();
+    title.innerHTML = `Your result : ${userPoints}/${quizz.length}`;
+    setTimeout(() => {
+      document.getElementById("qblock").style.transform = "translateX(0px)";
+    }, 50);
+    insert.innerHTML = `
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <th>Question</th>
+        <th>Answer</th>
+        <th>Your answer</th>
+        <th>Result</th>
+      </thead>
+      <tbody  id="result">
+      </tbody>
+    </table>`;
+    for (let i = 0; i < quizz.length; i++) {
+      console.log(i);
+      document.getElementById("result").innerHTML += `
+      <tr>
+        <td>${quizz[i].question}</td>
+        <td>${answers[i]}</td>
+        <td>${userAnswers[i]}</td>
+        <td>${userResults[i]}</td>
+      </tr>
+      `;
+    }
+    insert.innerHTML += `<p id="restart" class="mx-5 mt-5 mb-2 btn btn-danger btn-lg">Play again ?</p>`;
+    document.getElementById("restart").addEventListener("click", playAgain);
+};
+
+
+const gameResult = () => {
+    for (let i = 0; i < answers.length; i++) {
+      if (answers[i] === userAnswers[i]) {
+        userResults.push("<i class='far fa-check-circle fa-lg'></i>");
+        userPoints += 1;
+      } else {
+        userResults.push("<i class='far fa-times-circle fa-lg'></i>");
+      }
+    }
+};
+
+
+const playAgain = () => {
+    answers = new Array();
+    userAnswers = new Array();
+    userResults = new Array();
+    userPoints = 0;
+    questionNumber = 0;
+    howManyQuestions();
+};
+  
+howManyQuestions();
   
